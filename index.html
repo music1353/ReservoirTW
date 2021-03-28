@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>台灣水庫圖</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dist/style.css"/>
+    <link rel="stylesheet" href="dist/water.css">
+  </head>
+  <body>
+    <div id="app">
+      <v-container fluid class="container">
+        <v-row>
+          <v-col cols="5">
+            <div class="taiwan-map" ref="map" style="height: 100vh;">
+              <div id="map">
+                <svg id="svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+              </div>
+            </div>
+          </v-col>
+
+          <v-col class="reservior-section" cols="7" style="height:100vh;">
+            <div class="title">{{ locationName }}</div>
+
+            <div class="water-wrapper">
+              <v-row>
+                <v-col
+                  cols="12"
+                  v-for="item in reservoirData"
+                  :key="item.name"
+                  style="padding-top: 50px;"
+                >
+                  <v-row>
+                    <v-col cols="4">
+                      <div class="water">
+                        <div class="ripple" v-bind:style="waterStyle(item.percentage)"></div>
+                        <div class="text">{{ item.percentage.toFixed(2) }} %</div>
+                      </div>
+                    </v-col>
+                    <v-col class="water-info" cols="8">
+                      <div class="name">{{ item.name }}</div>
+                      <div class="info-text">有效儲水量： {{ item.volumn }} 萬立方公尺</div>
+                      <div class="info-text">預測剩餘天數： <span :style="remainDayStyle(item.volumn, item.daliyInflow, item.daliyOverflow)">{{ computeRemainDay(item.volumn, item.daliyInflow, item.daliyOverflow) }}</span> 天</div>
+                      <div class="info-text">更新時間： {{ item.updateAt }}</div>
+                    </v-col>
+                  </v-row>
+                </v-col>
+              </v-row>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="dist/vue.js"></script>
+  </body>
+</html>
