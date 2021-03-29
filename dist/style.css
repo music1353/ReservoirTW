@@ -67,7 +67,7 @@ body {
 	padding-top: 0px;
 }
 
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .container {
   flex-wrap: wrap
   }
@@ -79,4 +79,4 @@ body {
   .taiwan-map {
   height: 80vh
   }
-}
+} */

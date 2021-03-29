@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="dist/style.css"/>
     <link rel="stylesheet" href="dist/water.css">
   </head>
@@ -25,11 +26,12 @@
           </v-col>
 
           <v-col class="reservior-section" cols="7" style="height:100vh;">
-            <div class="title">{{ locationName }}</div>
+            <div class="title wow fadeInUp">{{ locationName }}</div>
 
             <div class="water-wrapper">
               <v-row>
                 <v-col
+                  class="wow fadeInUp"
                   cols="12"
                   v-for="item in reservoirData"
                   :key="item.name"
@@ -61,6 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="dist/vue.js"></script>
   </body>
 </html>

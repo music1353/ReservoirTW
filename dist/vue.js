@@ -99,6 +99,8 @@ new Vue({
 
     /* func */
     setReservoirData() {
+      new WOW().init();
+      
       if (!Object.keys(this.locationData).includes(this.locationName)) {
         this.reservoirData = [];
         return
